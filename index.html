@@ -1,0 +1,133 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VR/AR Challenge 1</title>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+    <script src="sphereexpend.js"></script>
+    <script src="backhome.js"></script>
+    <script src="videosphereexpend.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <img
+          id="gridfloor"
+          src="/Images/maxresdefault.jpg"
+          crossorigin="anonymous"
+        />
+        <!-- src="https://cdn.glitch.com/f2ee9d74-9726-4bed-9c30-2d49d6391dee%2Fstarry%20night.jpg?1547158907338" -->
+        <img id="starsky" src="Images/sky3dgrid.png" crossorigin="anonymous" />
+        <video
+          id="neoworld"
+          autoplay
+          loop="true"
+          src="/videos/Show_it_2_Me_360_Music_Video.mp4"
+          crossorigin="anonymous"
+        ></video>
+      </a-assets>
+      <a-camera wasd-controls="acceleration:300">
+        <a-cursor color="red"></a-cursor>
+      </a-camera>
+
+      <a-entity laser-controls="hand:right"></a-entity>
+
+      <a-sky id="sky" src="#starsky"></a-sky>
+
+      <a-entity id="architecture" class="homeworld">
+        <a-plane
+          id="floor"
+          rotation="-90 90 0"
+          width="30"
+          height="30"
+          src="#gridfloor"
+        ></a-plane>
+      </a-entity>
+      <a-entity
+        id="photospheredisplay"
+        class="homeworld"
+        position="-0.0247 0 -11"
+        visible=""
+      >
+        <a-box
+          color="black"
+          rotation="0 0 0"
+          width="1"
+          height="2"
+          depth=".5"
+          material=""
+          geometry=""
+        ></a-box>
+        <a-sphere
+          position="0 1.8 0"
+          radius=".7"
+          src="#neoworld"
+          sphereexpand=""
+          animation="property: rotation; to: 0 360 0; easing: easeInOutSine; dur: 30000; loop: true; elasticity: 0"
+          material=""
+          geometry=""
+        ></a-sphere>
+        <a-plane
+          id="photospherecaption"
+          position="0.01594 0.5 0.5"
+          rotation="-25 0 0"
+          height=".6"
+          width="auto"
+          color="#191817"
+          text="value: Experience Music Visually; width: 2; wrapCount: 30; align: center"
+          material=""
+          geometry="width: 2"
+        ></a-plane>
+      </a-entity>
+
+      <a-entity
+        id="videospheredisplay"
+        position="0.13334 0 15.67018"
+        class="homeworld"
+        visible=""
+        rotation="0 147.43579167424397 0"
+      >
+        <a-box
+          class="homeworld"
+          color="black"
+          rotation="0 35 0"
+          width="1"
+          height="2"
+          depth=".5"
+          material=""
+          geometry=""
+          visible=""
+        ></a-box>
+        <a-videosphere
+          id="videosphereentity"
+          position="0 1.8 0"
+          radius=".7"
+          src="#"
+          videosphereexpand=""
+          material=""
+          geometry=""
+        ></a-videosphere>
+        <a-plane
+          id="videospherecaption"
+          class="homeworld"
+          position="0.5 0.5 0.5"
+          rotation="-25.16659819332628 32.23689738524064 -1.2920198280200064"
+          height=".6"
+          width="auto"
+          color="#191817"
+          text="value: Nothing to see here..; width: 2; wrapCount: 30; align: center"
+          material=""
+          geometry="width: 2"
+          visible=""
+        ></a-plane>
+      </a-entity>
+      <a-circle
+        id="homebutton"
+        position="0 .1 0"
+        rotation="-90 0 0"
+        backhome
+      ></a-circle>
+    </a-scene>
+  </body>
+</html>
